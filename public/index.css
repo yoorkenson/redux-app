@@ -1,10 +1,7 @@
-#root {
+.calc {
 	height: 100vh;
 	box-sizing: border-box;
 	background: linear-gradient(180deg, #0837B0 0%, #021E66 100%);
-}
-
-.calc {
 	display: flex;
 	justify-content: center;
 }
@@ -49,17 +46,17 @@
 	padding: 12.5px;
 }
 
-#inc {
+.btn-inc {
 	background: #089C20;
 	border-radius: 4px;
 }
 
-#dec {
+.btn-dec {
 	background: #E7AA10;
 	border-radius: 4px;
 }
 
-#zero {
+.btn-zero {
 	background: #CF1C1C;
 	border-radius: 4px;
 }

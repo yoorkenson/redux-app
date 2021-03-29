@@ -1,38 +1,34 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import {createStore} from 'redux';
-
-const reducer = (state = 0, action) => {
-	switch (action.type) {
-		case 'INC':
-			return state + 1;
-		case 'DEC':
-			return state - 1;
-		case 'ZERO':
-			return state - state;
-		default:
-			return state;
-	}
-}
-
-const inc = () => ({type: 'INC'});
-const dec = () => ({type: 'DEC'});
-const zero = () => ({type: 'ZERO'});
-
-//inc - action-creator функция, потому что создают экшн (объект, что передаем в dispatch)
+import {Provider} from 'react-redux';
+import reducer from './reducer';
+import App from './components/app';
 
 const store = createStore(reducer);
 
-document.getElementById('inc').addEventListener('click', () => {
-	store.dispatch(inc());
-});
-document.getElementById('dec').addEventListener('click', () => {
-	store.dispatch(dec());
-});
-document.getElementById('zero').addEventListener('click', () => {
-	store.dispatch(zero());
-});
+// actions = {
+// 	inc: inc,
+// 	dec: dec,
+// 	zero: zero
+// }
+// const bindActionCreator = (creator, dispatch) => (...args) => {
+// 	dispatch(creator(...args));
+// }
 
-const update = () => {
-	document.getElementById('counter').textContent = store.getState();
-}
+// const incDispatch = () => dispatch(inc());
 
-store.subscribe(update);
+
+// const decDispatch = bindActionCreators(dec, dispatch);
+// const zeroDispatch = bindActionCreators(zero, dispatch);
+
+
+// document.getElementById('inc').addEventListener('click', inc);
+// document.getElementById('dec').addEventListener('click', dec);
+// document.getElementById('zero').addEventListener('click', zero);
+
+ReactDOM.render(
+	<Provider store={store}>
+		<App/>
+	</Provider>
+	, document.getElementById('root'));
